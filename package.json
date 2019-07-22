@@ -1,0 +1,28 @@
+{
+  "name": "infobip-connector-node",
+  "version": "1.0.0",
+  "description": "A library to connect to Infobip using NodeJS",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [],
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darlanmoraes/infobip-connector-node.git"
+  },
+  "author": "Darlan de Moraes Silveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darlanmoraes/infobip-connector-node/issues"
+  },
+  "homepage": "https://github.com/darlanmoraes/infobip-connector-node#readme",
+  "dependencies": {
+    "got": "9.6.0"
+  },
+  "devDependencies": {
+    "typescript": "3.5.3"
+  }
+}
