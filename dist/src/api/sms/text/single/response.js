@@ -7,4 +7,10 @@ class SmsTextSingleResponse {
     }
 }
 exports.SmsTextSingleResponse = SmsTextSingleResponse;
+class SmsTextSingleResponseCreator {
+    static create(source) {
+        return new SmsTextSingleResponse(source.bulkId, source.messages);
+    }
+}
+exports.SmsTextSingleResponseCreator = SmsTextSingleResponseCreator;
 //# sourceMappingURL=response.js.map

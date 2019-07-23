@@ -1,5 +1,5 @@
-import got = require("got");
 import { GotInstance, GotJSONFn } from "got";
+import got = require("got");
 import { Infobip } from "../index";
 
 const ID_LENGTH = 36;
@@ -35,7 +35,7 @@ function beforeRequest(): Array<got.BeforeRequestHook<got.GotBodyOptions<string>
         "headers",
         "body",
       ]);
-      console.log(JSON.stringify(data));
+      process.stdout.write(`${JSON.stringify(data)}\n`);
     },
   ];
 }
@@ -49,7 +49,7 @@ function afterRequest(): Array<got.AfterResponseHook<got.GotBodyOptions<string>,
         "body",
       ]);
       data.httpContextId = (raw as any).request.gotOptions.httpContextId;
-      console.log(JSON.stringify(data));
+      process.stdout.write(`${JSON.stringify(data)}\n`);
       return raw;
     },
   ];
@@ -85,7 +85,27 @@ export class Http {
   }
 
   public async post<T>(path: string, body: any, type: new() => T): Promise<T> {
-    return cast((await this.request.post(path, { body, json: true })).body, type);
+    return cast((await this.request.post(path, {
+      body, json: true,
+    })).body, type);
+  }
+
+  public async get<T>(path: string, query: any, type: new() => T): Promise<T> {
+    return cast((await this.request.get(path, {
+      json: true, query,
+    })).body, type);
+  }
+
+  public async put<T>(path: string, body: any, type: new() => T): Promise<T> {
+    return cast((await this.request.put(path, {
+      body, json: true,
+    })).body, type);
+  }
+
+  public async delete<T>(path: string, query: any, type: new() => T): Promise<T> {
+    return cast((await this.request.delete(path, {
+      json: true, query,
+    })).body, type);
   }
 
 }

@@ -9,11 +9,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const request_1 = require("../../request");
-const response_1 = require("./text/single/response");
+const response_1 = require("./2fa/send/response");
+const response_2 = require("./2fa/verify/response");
+const response_3 = require("./text/single/response");
 class SMS extends request_1.Http {
-    sendSmsTextSingle(id, body) {
+    sendSmsTextSingle(body) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.post(`/sms/${id}/text/single`, body, response_1.SmsTextSingleResponse);
+            return this.post(`/sms/1/text/single`, body, response_3.SmsTextSingleResponse);
+        });
+    }
+    send2faPin(body) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.post(`/2fa/1/pin`, body, response_1.SmsSendPinResponse);
+        });
+    }
+    verify2faPin(pinId, body) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.post(`/2fa/1/pin/${pinId}/verify`, body, response_2.SmsVerifyPinResponse);
         });
     }
 }

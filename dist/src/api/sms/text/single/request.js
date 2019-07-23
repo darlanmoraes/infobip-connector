@@ -8,4 +8,10 @@ class SmsTextSingleRequest {
     }
 }
 exports.SmsTextSingleRequest = SmsTextSingleRequest;
+class SmsTextSingleRequestCreator {
+    static create(source) {
+        return new SmsTextSingleRequest(source.from, source.to, source.text);
+    }
+}
+exports.SmsTextSingleRequestCreator = SmsTextSingleRequestCreator;
 //# sourceMappingURL=request.js.map

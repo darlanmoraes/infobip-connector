@@ -8,4 +8,10 @@ class SmsTextSingleResponseDetails {
     }
 }
 exports.SmsTextSingleResponseDetails = SmsTextSingleResponseDetails;
+class SmsTextSingleResponseDetailsCreator {
+    static create(source) {
+        return new SmsTextSingleResponseDetails(source.to, source.status, source.messageId);
+    }
+}
+exports.SmsTextSingleResponseDetailsCreator = SmsTextSingleResponseDetailsCreator;
 //# sourceMappingURL=response-details.js.map

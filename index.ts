@@ -1,11 +1,13 @@
 import btoa = require("btoa");
 import { SMS } from "./src/api/sms/sms-service";
+import { Push } from "./src/api/push/push-service";
 
 export class Configuration {
   constructor(
-    public hostname: string,
-    public username: string,
-    public password: string
+    public hostname?: string,
+    public username?: string,
+    public password?: string,
+    public pshAppId?: string,
   ) { }
 
   public toAuthorization(): string {
@@ -13,7 +15,7 @@ export class Configuration {
   }
 }
 
-const CONFIGURATION = new Configuration("", "", "");
+const CONFIGURATION = new Configuration("", "", "", "");
 
 export const Infobip = {
   configure: function(configuration: Configuration) {
@@ -22,5 +24,5 @@ export const Infobip = {
   configuration: function(): Configuration {
     return CONFIGURATION;
   },
-  SMS
+  SMS, Push
 }

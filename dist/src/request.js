@@ -38,7 +38,7 @@ function beforeRequest() {
                 "headers",
                 "body",
             ]);
-            console.log(JSON.stringify(data));
+            process.stdout.write(`${JSON.stringify(data)}\n`);
         },
     ];
 }
@@ -51,7 +51,7 @@ function afterRequest() {
                 "body",
             ]);
             data.httpContextId = raw.request.gotOptions.httpContextId;
-            console.log(JSON.stringify(data));
+            process.stdout.write(`${JSON.stringify(data)}\n`);
             return raw;
         },
     ];
@@ -83,7 +83,30 @@ class Http {
     }
     post(path, body, type) {
         return __awaiter(this, void 0, void 0, function* () {
-            return cast((yield this.request.post(path, { body, json: true })).body, type);
+            return cast((yield this.request.post(path, {
+                body, json: true,
+            })).body, type);
+        });
+    }
+    get(path, query, type) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return cast((yield this.request.get(path, {
+                json: true, query,
+            })).body, type);
+        });
+    }
+    put(path, body, type) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return cast((yield this.request.put(path, {
+                body, json: true,
+            })).body, type);
+        });
+    }
+    delete(path, query, type) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return cast((yield this.request.delete(path, {
+                json: true, query,
+            })).body, type);
         });
     }
 }
