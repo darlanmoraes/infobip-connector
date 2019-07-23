@@ -1,18 +1,26 @@
-import { Configuration, DEFAULT_CONFIGURATION } from "./src/configuration";
-import btoa = require('btoa');
-import { sendSmsTextSingle } from "./src/api/sms/sms-service";
-import { SmsTextSingleRequest } from "./src/api/sms/text/single/request";
+import btoa = require("btoa");
+import { SMS } from "./src/api/sms/sms-service";
 
-export function configure(configuration: Configuration) {
-  Object.assign(DEFAULT_CONFIGURATION, configuration);
+export class Configuration {
+  constructor(
+    public hostname: string,
+    public username: string,
+    public password: string
+  ) { }
+
+  public toAuthorization(): string {
+    return `Basic ${btoa(`${this.username}:${this.password}`)}`;
+  }
 }
 
-configure(<Configuration> {
-  hostname: '', 
-  username: '', 
-  password: ''
-});
+const CONFIGURATION = new Configuration("", "", "");
 
-sendSmsTextSingle(1, new SmsTextSingleRequest('', [ '' ], 'teste'))
-  .then(data => console.log(data))
-  .catch(e => console.log(e));
+export const Infobip = {
+  configure: function(configuration: Configuration) {
+    Object.assign(CONFIGURATION, configuration);
+  },
+  configuration: function(): Configuration {
+    return CONFIGURATION;
+  },
+  SMS
+}

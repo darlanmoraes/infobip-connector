@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const btoa = require("btoa");
-const sms_service_1 = require("./src/api/sms/sms-service");
+const sms_service_1 = require("./api/sms/sms-service");
 class Configuration {
     constructor(hostname, username, password) {
         this.hostname = hostname;
@@ -15,12 +15,12 @@ class Configuration {
 exports.Configuration = Configuration;
 const CONFIGURATION = new Configuration("", "", "");
 exports.Infobip = {
-    configure: function (configuration) {
+    setConfig: function (configuration) {
         Object.assign(CONFIGURATION, configuration);
     },
-    configuration: function () {
+    getConfig: function () {
         return CONFIGURATION;
     },
     SMS: sms_service_1.SMS
 };
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=infobip.js.map

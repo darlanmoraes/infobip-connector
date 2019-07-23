@@ -8,14 +8,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const request_1 = require("../../request");
-const response_1 = require("./text/single/response");
-class SMS extends request_1.Http {
-    sendSmsTextSingle(id, body) {
+const request_1 = require("../request");
+class Http {
+    constructor() {
+        this._request = request_1.request();
+    }
+    get request() {
+        return this._request;
+    }
+    postJson(path, body, type) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.post(`/sms/${id}/text/single`, body, response_1.SmsTextSingleResponse);
+            return Promise.resolve(request_1.cast((yield this.request.post(path, { body, json: true })).body, type));
         });
     }
 }
-exports.SMS = SMS;
-//# sourceMappingURL=sms-service.js.map
+exports.Http = Http;
+//# sourceMappingURL=http.js.map

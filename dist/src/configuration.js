@@ -13,5 +13,5 @@ class Configuration {
     }
 }
 exports.Configuration = Configuration;
-exports.DEFAULT_CONFIGURATION = new Configuration('', '', '');
+exports.DEFAULT_CONFIGURATION = new Configuration("", "", "");
 //# sourceMappingURL=configuration.js.map
