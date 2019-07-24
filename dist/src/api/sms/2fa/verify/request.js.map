@@ -1,1 +1,0 @@
-{"version":3,"file":"request.js","sourceRoot":"","sources":["../../../../../../src/api/sms/2fa/verify/request.ts"],"names":[],"mappings":";;AAAA,MAAa,mBAAmB;IAC9B,YACS,GAAY;QAAZ,QAAG,GAAH,GAAG,CAAS;IACjB,CAAC;CACN;AAJD,kDAIC;AAED,MAAa,0BAA0B;IAC9B,MAAM,CAAC,MAAM,CAAC,MAA2B;QAC9C,OAAO,IAAI,mBAAmB,CAAC,MAAM,CAAC,GAAG,CAAC,CAAC;IAC7C,CAAC;CACF;AAJD,gEAIC"}

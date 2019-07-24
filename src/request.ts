@@ -1,6 +1,6 @@
 import { GotInstance, GotJSONFn } from "got";
 import got = require("got");
-import { Infobip } from "../index";
+import { Infobip } from "./index";
 
 const ID_LENGTH = 36;
 const ID_START = 2;
