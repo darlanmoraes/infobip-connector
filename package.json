@@ -22,7 +22,7 @@
   "homepage": "https://github.com/darlanmoraes/infobip-connector-node#readme",
   "dependencies": {
     "btoa": "1.2.1",
-    "got": "9.6.0"
+    "got": "11.8.5"
   },
   "devDependencies": {
     "@types/btoa": "1.2.1",
